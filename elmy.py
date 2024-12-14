@@ -31,3 +31,5 @@ y = df.iloc[:, -1]
 
 plt.plot(x, y)
 plt.show()
+tk(o'ork')ezdd
+rqofjzoijezoj
