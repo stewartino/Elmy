@@ -2,7 +2,8 @@ import numpy as np
 import pandas as pd 
 from matplotlib import pyplot as plt
 
-X_train = pd.read_csv('/home/mr-burns/Bureau/code/Data_science/Elmy/X_train', )
+X_train = pd.read_csv('/home/mr-burns/Bureau/Elmy/X_train')
+
 
 
 df = X_train.rename(columns={
@@ -19,18 +20,26 @@ df = X_train.rename(columns={
     }
                )
 
+df.dropna()
+
+print(df.head())
+
 print(df)
 # print(df.head())
 print(df.isnull().sum())
 
-spot_id = pd.read_csv('/home/mr-burns/Bureau/code/Data_science/Elmy/y_train')
+spot_id = pd.read_csv('/home/mr-burns/Bureau/Elmy/y_train')
 print(spot_id)
 
-x = df.iloc[:, -1] 
-y = df.iloc[:, -1]
+import pandas as pd
+from sklearn.linear_model import LinearRegression
 
-plt.plot(x, y)
-plt.show()
-tk(o'ork')ezdd
-rqofjzoijezoj
-edjiedjojdzidze
+
+# Conversion des dates en timestamp
+df[:, -1] = pd.to_datetime(df['date'])
+spot_id[:, -1] = df['date'].astype(int) / 10**9  # ou une autre transformation si nécessaire
+
+
+# Créer et entraîner le modèle
+model = LinearRegression()
+model.fit(df, spot_id)
